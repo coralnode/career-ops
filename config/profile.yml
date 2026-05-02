@@ -1,0 +1,70 @@
+# Career-Ops Profile Configuration
+# Copy this file to config/profile.yml and fill in your details.
+# This is the single source of truth for your personal data across all modes.
+
+candidate:
+  full_name: "Rouzbeh Amini"
+  email: "rouzbeh.amini@gmail.com"
+  phone: "+31 650510607"
+  location: "Amsterdam, Netherlands"
+  linkedin: "linkedin.com/in/rouzbeh"
+  # (Optional) Canva resume design ID for visual CV generation via /career-ops pdf.
+  # Find it in your Canva design URL: https://www.canva.com/design/DAxxxxxxx/...
+  # The ID starts with "D" and is 11 characters long.
+  # canva_resume_design_id: "DAxxxxxxxxx"
+
+target_roles:
+  # Your North Star roles — what you're optimizing for
+  primary:
+    - "VP sustainability performance"
+    - "VP business digital transformation"
+    - "Digital Partner"
+    - "VP Sustainability technology"
+    - "VP Sustainability engineering"
+  # Archetypes help the evaluation system score fit
+  archetypes:
+    - name: "Sustainability Data and Technology"
+      level: "VP"
+      fit: "primary"        # primary = dream role, secondary = good fit, adjacent = stretch
+    - name: "Sustainability Product Manager"
+      level: "VP"
+      fit: "secondary"
+    - name: "Digital Transformation Lead"
+      level: "VP"
+      fit: "adjacent"
+    - name: "Chief Sustainability Officer"
+      level: "C-suite"
+      fit: "primary"
+    - name: "Advisory Partner / Practice Builder"
+      level: "Partner"
+      fit: "primary"
+narrative:
+  # Your professional headline (1 line)
+  headline: "A globally recognized executive at the intersection of sustainability, data, and digital transformation"
+  # Your exit story — what makes you unique
+  exit_story: "with 16+ years driving enterprise-scale value for Fortune 500 organisations spanning product sector leadership, senior consulting, and Big 4 advisory. Combines deep technical depth (PhD, TU Delft) with proven commercial leadership: founding and scaling new global practices, delivering $290M+ sustainability technology portfolios, and advising C-suite leaders across manufacturing, consumer goods, food chain, agriculture, and transportation. Trusted as both an embedded executive and a strategic advisor, with the rare ability to translate complex regulatory, technological, and sustainability imperatives into boardroom-ready strategy and tangible business outcomes. A published researcher, thought leader, and builder of high-performing multinational teams."
+  # Your top 3-5 superpowers
+  superpowers:
+    - "End-to-end solution design"
+    - "Digital Strategy and Roadmap"
+    - "Data Strategy"
+    - "Business digital transformation"
+    - "Digital Innovations for Business"
+  # Optional: dashboard/demo URL with credentials
+  # dashboard:
+  #   url: "https://janesmith.dev/demo"
+  #   password: "demo-2026"
+
+compensation:
+  target_range: "€350-500K"     # Your target total comp
+  currency: "EUR"
+  minimum: "€350K"               # Walk-away number
+  location_flexibility: "Remote preferred, on site location in Netherlands"
+
+location:
+  country: "Netherlands"
+  city: "Amsterdam"
+  timezone: "CET"
+  visa_status: "No sponsorship needed"
+  # For remote roles outside your country:
+  # onsite_availability: "1 week/month in any city"
