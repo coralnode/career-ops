@@ -1,0 +1,733 @@
+# Portal Scanner Configuration
+# Used by /career-ops scan to discover new offers automatically.
+#
+# Strategy (3 levels):
+#   1. Playwright → careers_url of each company (real-time, reliable)
+#   2. Greenhouse API → structured JSON (fast, Greenhouse-only)
+#   3. WebSearch with site: filters (broad discovery, may be stale)
+#
+# IMPORTANT: Each company in tracked_companies MUST have careers_url.
+
+# -- Title filter --
+# The scanner uses these keywords to decide if a title is relevant.
+# At least 1 positive must match AND 0 negatives must match (case-insensitive).
+
+title_filter:
+  positive:
+    - "Sustainability"
+    - "Data"
+    - "Technology"
+    - "Climate"
+    - "Digital Transformation"
+    - "Business technology"
+    - "Data and AI"
+    - "Sustainability Data and Technology"
+    - "Co-founder"
+    - "Partner"
+    - "Professional services"
+    - "technology adoption"
+    - "Strategic pursuits"
+    - "Solutions Architect"
+    - "Product Manager"
+    - "Business Systems"
+    - "Transformation"
+  negative:
+    - "Junior"
+    - "Intern"
+    - ".NET"
+    - "Java "
+    - "iOS"
+    - "Android"
+    - "PHP"
+    - "Ruby"
+    - "Embedded"
+    - "Firmware"
+    - "FPGA"
+    - "ASIC"
+    - "Blockchain"
+    - "Web3"
+    - "Crypto"
+    - "Salesforce Admin"
+    - "Engineer"
+    - "Oracle EBS"
+    - "Mainframe"
+    - "COBOL"
+  seniority_boost:
+    - "Vice President"
+    - "VP"
+    - "Senior Director"
+    - "Managing Director"
+    - "Head"
+    - "Director"
+    - "Co-founder"
+    - "CTO"
+
+# -- Search queries --
+search_queries:
+  - name: Greenhouse — SA & FDE
+    query: 'site:boards.greenhouse.io OR site:job-boards.greenhouse.io "Solutions Architect"'
+    enabled: true
+
+# -- Tracked companies --
+
+tracked_companies:
+
+  # -- Global Consulting & IT Services (Major NL presence) --
+
+  - name: Accenture
+    careers_url: https://www.accenture.com/nl-en/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Deloitte
+    careers_url: https://www2.deloitte.com/nl/nl/pages/carriere.html
+    scan_method: websearch
+    enabled: true
+
+  - name: PwC
+    careers_url: https://www.pwc.nl/nl/carriere.html
+    scan_method: websearch
+    enabled: true
+
+  - name: EY (Ernst & Young)
+    careers_url: https://www.ey.com/nl/en/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Capgemini
+    careers_url: https://www.capgemini.com/nl-nl/careers/
+    scan_method: websearch
+    enabled: true
+
+  - name: Ramboll
+    careers_url: https://www.ramboll.com/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: McKinsey & Company
+    careers_url: https://www.mckinsey.com/careers
+    scan_method: websearch
+    enabled: true
+
+  # -- Netherlands / Dutch corporates --
+
+  - name: ASML
+    careers_url: https://www.asml.com/en/careers/find-your-job
+    scan_method: websearch
+    enabled: true
+
+  - name: Adyen
+    careers_url: https://careers.adyen.com/vacancies
+    api: https://boards-api.greenhouse.io/v1/boards/adyen/jobs
+    enabled: true
+
+  - name: ING Group
+    careers_url: https://www.ing.jobs/Global/Careers.htm
+    scan_method: websearch
+    enabled: true
+
+  - name: Philips
+    careers_url: https://www.careers.philips.com/global/en
+    scan_method: websearch
+    enabled: true
+
+  - name: Heineken
+    careers_url: https://careers.theheinekencompany.com/viewalljobs/
+    scan_method: websearch
+    enabled: true
+
+  - name: Ahold Delhaize
+    careers_url: https://careers.aholddelhaize.com/vacancies
+    scan_method: websearch
+    enabled: true
+
+  - name: NXP Semiconductors
+    careers_url: https://www.nxp.com/about/about-nxp/careers:CAREERS
+    scan_method: websearch
+    enabled: true
+
+  - name: AkzoNobel
+    careers_url: https://www.akzonobel.com/en/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: DSM-Firmenich
+    careers_url: https://www.dsm-firmenich.com/corporate/careers.html
+    scan_method: websearch
+    enabled: false  # current employer
+
+  - name: Wolters Kluwer
+    careers_url: https://careers.wolterskluwer.com/en
+    scan_method: websearch
+    enabled: true
+
+  - name: Arcadis
+    careers_url: https://careers.arcadis.com/opportunities/
+    scan_method: websearch
+    enabled: true
+
+  - name: ABN AMRO
+    careers_url: https://www.abnamro.com/en/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Randstad
+    careers_url: https://www.randstad.com/jobs/
+    scan_method: websearch
+    enabled: true
+
+  - name: PostNL
+    careers_url: https://www.postnl.nl/en/about-postnl/careers/
+    scan_method: websearch
+    enabled: true
+
+  - name: KPN
+    careers_url: https://jobs.kpn.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Vopak
+    careers_url: https://www.vopak.com/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: SBM Offshore
+    careers_url: https://www.sbmoffshore.com/working-with-us
+    scan_method: websearch
+    enabled: true
+
+  - name: Airbus
+    careers_url: https://www.airbus.com/en/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: ASM International
+    careers_url: https://www.asm.com/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: BE Semiconductor (Besi)
+    careers_url: https://www.besi.com/careers/
+    scan_method: websearch
+    enabled: true
+
+  - name: Prosus
+    careers_url: https://www.prosus.com/careers/
+    scan_method: websearch
+    enabled: true
+
+  - name: Aegon
+    careers_url: https://www.aegon.com/careers/
+    scan_method: websearch
+    enabled: true
+
+  - name: NN Group
+    careers_url: https://www.nn-group.com/careers.htm
+    scan_method: websearch
+    enabled: true
+
+  - name: ASR Nederland
+    careers_url: https://www.werkenbijasr.nl/
+    scan_method: websearch
+    enabled: true
+
+  - name: Sligro Food Group
+    careers_url: https://sligrofoodgroup.nl/en/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: JDE Peet's
+    careers_url: https://www.jdepeets.com/careers/
+    scan_method: websearch
+    enabled: true
+
+  - name: Exor
+    careers_url: https://www.exor.com/pages/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Basic-Fit
+    careers_url: https://jobs.basic-fit.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Unilever
+    careers_url: https://www.unilever.com/careers/
+    scan_method: websearch
+    enabled: true
+
+  - name: Stellantis
+    careers_url: https://www.stellantis.com/en/careers
+    scan_method: websearch
+    enabled: true
+
+  # -- Germany --
+
+  - name: Volkswagen Group
+    careers_url: https://jobs.volkswagen-group.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: BMW Group
+    careers_url: https://www.bmwgroup.jobs/en.html
+    scan_method: websearch
+    enabled: true
+
+  - name: Mercedes-Benz Group
+    careers_url: https://group.mercedes-benz.com/careers/
+    scan_method: websearch
+    enabled: true
+
+  - name: Allianz
+    careers_url: https://careers.allianz.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Siemens
+    careers_url: https://jobs.siemens.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Deutsche Telekom
+    careers_url: https://careers.telekom.com/en
+    scan_method: websearch
+    enabled: true
+
+  - name: BASF
+    careers_url: https://basf.jobs/
+    scan_method: websearch
+    enabled: true
+
+  - name: Bosch
+    careers_url: https://www.bosch.com/careers/
+    scan_method: websearch
+    enabled: true
+
+  - name: SAP
+    careers_url: https://jobs.sap.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Munich Re
+    careers_url: https://careers.munichre.com/en/munichre
+    scan_method: websearch
+    enabled: true
+
+  - name: Commerzbank
+    careers_url: https://www.commerzbank.de/karriere
+    scan_method: websearch
+    enabled: true
+
+  - name: Talanx Group
+    careers_url: https://careers.talanx.de/
+    scan_method: websearch
+    enabled: true
+
+  - name: Infineon
+    careers_url: https://www.infineon.com/cms/en/careers/
+    scan_method: websearch
+    enabled: true
+
+  - name: Henkel
+    careers_url: https://www.henkel.com/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: ThyssenKrupp
+    careers_url: https://www.thyssenkrupp.com/en/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Deutsche Bahn
+    careers_url: https://karriere.deutschebahn.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: RWE
+    careers_url: https://jobs.rwe.com/
+    scan_method: websearch
+    enabled: true
+
+  # -- France --
+
+  - name: TotalEnergies
+    careers_url: https://careers.totalenergies.com/en
+    scan_method: websearch
+    enabled: true
+
+  - name: EDF
+    careers_url: https://recrutement.edf.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: BNP Paribas
+    careers_url: https://group.bnpparibas/en/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Société Générale
+    careers_url: https://careers.societegenerale.com/en
+    scan_method: websearch
+    enabled: true
+
+  - name: Crédit Agricole
+    careers_url: https://groupecreditagricole.jobs/en/
+    scan_method: websearch
+    enabled: true
+
+  - name: LVMH
+    careers_url: https://www.lvmh.com/en/join-us/work-at-lvmh
+    scan_method: websearch
+    enabled: true
+
+  - name: Carrefour
+    careers_url: https://www.carrefour.com/en/hr-work-carrefour
+    scan_method: websearch
+    enabled: true
+
+  - name: AXA
+    careers_url: https://careers.axa.com/careers-home/jobs
+    scan_method: websearch
+    enabled: true
+
+  - name: Engie
+    careers_url: https://jobs.engie.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Vinci
+    careers_url: https://jobs.vinci.com/en
+    scan_method: websearch
+    enabled: true
+
+  - name: L'Oréal
+    careers_url: https://careers.loreal.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Sanofi
+    careers_url: https://careers.sanofi.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Veolia
+    careers_url: https://careers.veolia.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Orange
+    careers_url: https://jobs.orange.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Saint-Gobain
+    careers_url: https://careers.saint-gobain.com/
+    scan_method: websearch
+    enabled: true
+
+  # -- United Kingdom --
+
+  - name: Shell
+    careers_url: https://www.shell.com/careers.html
+    scan_method: websearch
+    enabled: true
+
+  - name: HSBC
+    careers_url: https://www.hsbc.com/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Tesco
+    careers_url: https://careers.tesco.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Lloyds Banking Group
+    careers_url: https://www.lloydsbankinggroup.com/careers.html
+    scan_method: websearch
+    enabled: true
+
+  - name: Barclays
+    careers_url: https://search.jobs.barclays/
+    scan_method: websearch
+    enabled: true
+
+  - name: Rio Tinto
+    careers_url: https://jobs.riotinto.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Vodafone
+    careers_url: https://careers.vodafone.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: AstraZeneca
+    careers_url: https://careers.astrazeneca.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Sainsbury's
+    careers_url: https://sainsburys.jobs/
+    scan_method: websearch
+    enabled: true
+
+  - name: Standard Chartered
+    careers_url: https://jobs.standardchartered.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: GSK
+    careers_url: https://jobs.gsk.com/en-gb
+    scan_method: websearch
+    enabled: true
+
+  - name: Compass Group
+    careers_url: https://www.compass-group.co.uk/jobs/
+    scan_method: websearch
+    enabled: true
+
+  - name: British American Tobacco
+    careers_url: https://careers.bat.com/en
+    scan_method: websearch
+    enabled: true
+
+  - name: Diageo
+    careers_url: https://www.diageo.com/en/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: National Grid
+    careers_url: https://careers.nationalgrid.com/
+    scan_method: websearch
+    enabled: true
+
+  # -- Spain --
+
+  - name: Banco Santander
+    careers_url: https://www.santander.com/en/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Repsol
+    careers_url: https://www.repsol.com/en/careers/index.cshtml
+    scan_method: websearch
+    enabled: true
+
+  - name: Iberdrola
+    careers_url: https://www.iberdrola.com/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: BBVA
+    careers_url: https://www.bbva.com/en/careers/
+    scan_method: websearch
+    enabled: true
+
+  - name: Inditex
+    careers_url: https://www.inditexcareers.com/portalweb/en/
+    scan_method: websearch
+    enabled: true
+
+  - name: Grupo ACS
+    careers_url: https://www.grupoacs.com/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Telefónica
+    careers_url: https://www.telefonica.com/en/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Mercadona
+    careers_url: https://info.mercadona.es/en/jobs
+    scan_method: websearch
+    enabled: true
+
+  # -- Switzerland --
+
+  - name: Glencore
+    careers_url: https://www.glencore.com/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Nestlé
+    careers_url: https://www.nestle.com/jobs
+    scan_method: websearch
+    enabled: true
+
+  - name: Roche
+    careers_url: https://careers.roche.com/global/en.html
+    scan_method: websearch
+    enabled: true
+
+  - name: Novartis
+    careers_url: https://www.novartis.com/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: UBS
+    careers_url: https://www.ubs.com/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: ABB
+    careers_url: https://careers.abb/global/en/home
+    scan_method: websearch
+    enabled: true
+
+  # -- Sweden --
+
+  - name: Volvo Group
+    careers_url: https://jobs.volvogroup.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Volvo Cars
+    careers_url: https://jobs.volvocars.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Ericsson
+    careers_url: https://www.ericsson.com/en/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: H&M Group
+    careers_url: https://career.hm.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Sandvik
+    careers_url: https://www.sandvik.com/en/careers/
+    scan_method: websearch
+    enabled: true
+
+  - name: Atlas Copco
+    careers_url: https://www.atlascopco.com/en-us/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Electrolux
+    careers_url: https://careers.electrolux.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: SEB Bank
+    careers_url: https://sebgroup.com/career
+    scan_method: websearch
+    enabled: true
+
+  # -- Italy --
+
+  - name: Generali
+    careers_url: https://careers.generali.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: ENI
+    careers_url: https://www.eni.com/en-IT/careers.html
+    scan_method: websearch
+    enabled: true
+
+  - name: Enel
+    careers_url: https://jobs.enel.com/en_US/careers/Home
+    scan_method: websearch
+    enabled: true
+
+  - name: Intesa Sanpaolo
+    careers_url: https://careers.intesasanpaolo.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: UniCredit
+    careers_url: https://www.unicredit.eu/en/careers.html
+    scan_method: websearch
+    enabled: true
+
+  # -- Norway --
+
+  - name: Equinor
+    careers_url: https://www.equinor.com/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Norsk Hydro
+    careers_url: https://www.hydro.com/en/careers/
+    scan_method: websearch
+    enabled: true
+
+  - name: Yara International
+    careers_url: https://www.yara.com/careers/
+    scan_method: websearch
+    enabled: true
+
+  # -- Denmark --
+
+  - name: A.P. Moller-Maersk
+    careers_url: https://www.maersk.com/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Novo Nordisk
+    careers_url: https://www.novonordisk.com/careers.html
+    scan_method: websearch
+    enabled: true
+
+  - name: Carlsberg
+    careers_url: https://www.carlsberggroup.com/careers/
+    scan_method: websearch
+    enabled: true
+
+  # -- Belgium --
+
+  - name: AB InBev
+    careers_url: https://careers.ab-inbev.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Umicore
+    careers_url: https://careers.umicore.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: KBC Group
+    careers_url: https://www.kbc.com/en/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Solvay
+    careers_url: https://careers.solvay.com/
+    scan_method: websearch
+    enabled: true
+
+  # -- Finland --
+
+  - name: Neste
+    careers_url: https://careers.neste.com/
+    scan_method: websearch
+    enabled: true
+
+  - name: Stora Enso
+    careers_url: https://www.storaenso.com/en/careers
+    scan_method: websearch
+    enabled: true
+
+  - name: Kesko
+    careers_url: https://careers.kesko.fi/en/
+    scan_method: websearch
+    enabled: true
+
+  # -- Austria --
+
+  - name: OMV
+    careers_url: https://careers.omv.com/
+    scan_method: websearch
+    enabled: true
+
+  # -- Portugal --
+
+  - name: EDP
+    careers_url: https://careers.edp.com/
+    scan_method: websearch
+    enabled: true
